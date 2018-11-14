@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>找出每个字符出现的次数</title>
+</head>
+<body>
+    <script>
+    var str = "nayitiandougaibianlexinnian";
+    //->获取每一个字符出现的次数
+    var obj = {};
+    //->i指的是不区分正则a-z的大小写
+        str.replace(/[a-z]/gi,function(){
+        var val = arguments[0];
+    obj[val] >=1? obj[val] += 1: obj[val] = 1;
+    }) ;
+    // console.log(obj);//->{n: 6, a: 5, y: 1, i: 6, t: 1, …}
+    
+    //->获取最多出现的次数
+    var maxNum = 0;
+    for (var key in obj){
+        obj[key] > maxNum ? maxNum = obj[key] : null;
+    }
+
+    //->把所有符合的都获取到
+    var ary = [];
+    for (var key in obj){
+        obj[key] === maxNum ? ary.push[key] : null;
+    }
+    console.log("出现次数最多的是" + ary.toString("") + "出现了" + maxNum + "次"
+    );
+    </script>
+</body>
+</html>
