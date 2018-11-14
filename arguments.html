@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>把数字小写替换成中文数字</title>
+</head>
+<body>
+    <script>
+    var str = "本次消费:2018";
+    var ary =["零","壹","贰","叁","肆","伍","陆","柒","捌","玖"];
+    str = str.replace(/\d/g,function(){
+        //->第一次执行：大正则捕获的是9，返回的就是ary[9] -->"玖";
+        //->第二次执行：大正则捕获的是8，返回的就是ary[8] -->"捌";
+        //->...
+        return ary[arguments[0]];
+    })
+    console.log(str);
+    
+    </script>
+</body>
+</html>
