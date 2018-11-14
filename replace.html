@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    var str = "mingming那么，mingming可以";
+    //->我们在function中，通过return来返回我们要替换的内容-->return是啥就把大正则捕获的内容替换
+    str = str.replace(/(ming)(ming)/g,function(){
+        return("明明");//->如果不写return直接undefined替换undefined那么，undefined可以
+    })
+    console.log(str)//->明明那么，明明可以
+    
+    </script>
+</body>
+</html>
