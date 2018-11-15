@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS中的盒模型</title>
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    #box{
+        margin: 50px;
+        padding: 30px 50px;
+        width: 300px;
+        height: 200px;
+        border: 2px solid red;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 30px
+    }
+    </style>
+</head>
+
+<body>
+<div id="box">要得到你就必须要付出，要付出你就要学会坚持，如果你真的觉得很难坚持，
+    那你就放弃，但是一旦放弃就不要在抱怨，人生就是这样，世界也是平衡的。每个人通过自己的努力，活出了自己想要的样子</div>
+
+    <script>
+    var box = document.getElementById('box');
+    console.dir('box')
+    </script>
+</body>
+</html>
