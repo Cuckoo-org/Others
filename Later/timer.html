@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS中的定时器</title>
+</head>
+<body>
+    <script>
+        //->设置一个定时器（setTimeout）等到1000毫秒后执行对应的方法，方法执行完成后，定时器结束运行。
+    window.setTimeout(function(){
+
+    },1000);
+       //->设置一个定时器（setTimeout）等到1000毫秒后执行对应的方法，方法执行完成后，定时器并没有结束，以后每隔1000毫秒都会把定时器的方法执行一次，直到手动清楚定时器为止。
+    window.setInterval(function(){
+
+    },1000)
+    //->设置定时器的时候是有返回值的->返回的结果是一个数字，代表当前是第几个定时器
+    var timer1=window.setTimeout(function(){
+        console.log("第一个定时器")
+    },1000);
+    console.log(timer1);//->1
+    var timer2=window.setTimeout(function(){
+        console.log("第二个定时器")
+    },1000);
+    console.log(timer2);//->2
+    // var timer2=window.setInterval(function(){
+    //     console.log("第三个定时器")
+    // },1000);
+    // console.log(timer2);
+    window.clearTimeout(timer1);//->清除定时器的时候，我们里面放一个数字，代表把这个数字代表的那个第N个定时器清除掉
+    window.clearInterval(timer2);//->使用的是setTimeout设置的第二个定时器，使用clearInterval也可以把它清除掉
+    </script>
+</body>
+</html>
