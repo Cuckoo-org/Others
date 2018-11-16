@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>补充的css伪类</title>
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 14px;
+    }
+    .box{
+        margin: 30px auto;
+        padding: 20px 10px;
+        width: 300px;
+        height: 450px;
+        border: 2px solid greenyellow;
+    }
+    .box p{
+        line-height: 30px;
+    }
+    .box p:before{
+        display: block;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        content: "css伪类补充";
+        background: yellow;
+    }
+    .box p:after{
+        display: block;
+        height: 25px;
+        line-height: 30px;
+        text-align: center;
+        content: "css伪类补充";
+        background: rgb(0, 255, 106);
+    }
+    .clear{
+        zoom:1; 
+    }
+  
+    .clear:after{
+        display: block;
+        width: 0;
+        height: 0;
+        content: "";
+        overflow: hidden;
+        clear: both;
+    }
+    ul,li{
+        list-style: none;
+    }
+    .list{
+        margin: 20px auto;
+        padding: 30px;
+        width: 300px;
+        border: 1px solid #000;
+    }
+    .list li{
+        float: left;
+        width: 100px;
+        height: 100px;
+        background: lightyellow;
+    }
+    /*css3中新增加了伪类：nth-child*/;
+    /* .list li:nth-child(odd){
+        background: red;
+    }奇偶行变颜色
+    .list li:nth-child(even){
+        background: red;
+    } */
+    .list li:nth-child(4n+1){
+        background: red;
+    }
+    .list li:nth-child(4n+2){
+        background:orange;
+        }
+    .list li:nth-child(4n+3){
+        background:yellow;
+        }
+     .list li:nth-child(4n+4){
+        background:green;
+        }
+      
+    </style>
+</head>
+<body>
+    <div class="box">
+        <p>
+                伪元素和伪类的区别从作用也可以看出
+
+                伪元素：伪元素是创造关于文档语言能够指定的文档树之外的抽象。例如文档语言不能提供访问元素内容第一字或者第一行的机制。伪元素允许设计师引用它们，否则这是难以办到            的。伪元素还提供样式设计师给在源文档中不存在的内容分配样式（例如：:before和:after能够访问产生的内容）。
+                
+                伪类：伪类对元素进行分类是基于特征(characteristics)而不是它们的名字、属性或者内容；原则上特征是不可以从文档树上推断得到的。
+                
+                         何为伪类?就是css内植类css内部本身赋予它一些特性和功能，也就是你不用再class=...或id=...你就可以直接拿来使用，当然你也可以改变它的部分属性比如：                        a:link{color:#FF0000;}
+        </p>
+    </div>
+    <ul class="list clear">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</body>
+</html>
