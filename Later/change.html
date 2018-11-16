@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>浏览器滚动条点击回到顶部</title>
     <style>
     *{
         margin: 0;
@@ -67,9 +67,28 @@
     <!-- <div id="target"></div> -->
     <script>
     var goLink = document.getElementById("goLink");
+    //->回到顶部
+    //->总时间(duration):500ms 频率(interval)：多长时间走一步 10ms
+    //->总距离(target):当前的位置(当前的scrollTop值)->目标的位置（0）
+    //->步长（step）：每一次走的距离 target/duration ->每1ms走的距离  interval每一次走的距离
     goLink.onclick = function(){
-        document.documentElement.scrollTop = 0;
-        document.body.scrollTop = 0;
+        //->当点击GO的时候，首先把每一步要走的步长计算出来
+        var duration = 500,interval = 10,target = document.
+        documentElement.scrollTop||document.body.scrollTop;
+        var step = (target / duration)*interval;
+
+        //->计算完成步长后，让以前的页面每隔interval这么长时间走一步，在原来的scrollTop的基础上-步长;
+        var timer = window.setInterval(function(){
+          var curTop = document.documentElement.scrollTop||
+          document.body.scrollTop;
+          if(curTop === 0){//->已经到头了
+             window.clearInterval(timer);
+             return;
+          }
+          curTop -= step;
+          document.documentElement.scrollTop = curTop;
+          document.body.scrollTop = curTop;
+        },interval)
     }
     </script>
 </body>
