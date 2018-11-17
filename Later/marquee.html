@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>跑马灯</title>
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-size: 14px;
+    }
+    #box{
+        margin: 20px auto;
+        padding: 0 10px;
+        width: 600px;
+        height: 25px;
+        border: 2px dashed orangered;
+        line-height: 25px;
+        background: lightcoral;
+
+    }
+    #wrap{
+        white-space: nowrap;  /*强制文字不换行*/
+        height: 25px;
+        overflow: hidden;
+    }
+    #wrap span{
+        color: red;
+        font-weight: bold;
+        font-size: 16px;
+    }
+    #wrap div{
+        display: inline-block;
+    }
+    </style>
+</head>
+<body>
+    <div id="box"><div id="wrap">
+        <div id="conBegin"> <span>通知：</span> 通过问题，打开新旧知识之间的通道 提问，是个主动的行为。可以主动调取原有知识中的相关内容，并和新知识建立联系，形成整体感，这样才能建构知识体...</div>
+        <div id="conEnt"><span>通知：</span> 通过问题，打开新旧知识之间的通道 提问，是个主动的行为。可以主动调取原有知识中的相关内容，并和新知识建立联系，形成整体感，这样才能建构知识体...</div>
+    </div>
+    </div>
+       
+    <script>
+    var wrap = document.getElementById("wrap");
+    var conBegin = document.getElementById("conBegin");
+    var conBegin_width = getCss(conBegin,"width");
+
+    var timer = window.setInterval(function(){
+        wrap.scrollLeft++;
+        if(wrap.scrollLeft >= conBegin_width){
+            wrap.scrollLeft = 0;
+        }
+
+        //->利用了scrollLeft是存在最大值的思想，在累加之前获取一个值，在累加后再获取一个值，如果两个值相等了，说明累加没有作用了->到头了
+        if(curLeft === newLeft){
+            wrap.scrollLeft = 0;//->虽然从头开始了，但是有一个切换闪动效果。
+        }
+    },10);
+
+    function getCss(curEle, attr){
+        var val = null,reg = null;
+        if("getComputedStyle" in window){
+            val = window.getComputedStyle(curEle,null)[attr];
+        }else{
+            if(attr === "opacity"){
+                val = curEle.currentStyle["filter"];
+                reg = /^alpha\(opacity=(\d+(?:\.\d+)?)\)$/i;
+                val = reg.test(val) ? reg.exec(val)[1] /100:1;
+
+            }else{
+                val = curEle.currentStyle[attr];
+            }
+        }
+        reg = /^(-?\d+(\.\d+)?)(px|pt|rem|em)?$/i;
+        return reg.test(val) ? parseFloat(val) : val;
+    }
+    </script>
+</body>
+</html>
