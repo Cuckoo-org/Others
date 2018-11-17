@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>图片延迟加载/图片懒加载</title>
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-size: 14px;
+    }
+    img{
+        display: block;
+        border: none;
+    }
+    .banner{
+        margin: 20px auto;
+        width: 400px;
+        height: 270px;
+        border: 1px solid goldenrod;
+        background:url("img/a9e2eaea28ae59007bf5dae7a5f504f8_aa58352b7ff645e88ca86711dd11c91c.gif") no-repeat center center gray ;/*给当前的区域加一个默认占位，告诉用户此处的图片正在加载*/
+    }
+    .banner img{
+      display: none;/*在开始的时候img的src属性没有地址，这样的话在浏览器会显示一张碎图，不美观，所以我们默认是隐藏的，当真实的图片加载完成后再显示*/
+      width: 100%;
+      height: 100%;
+    }
+    </style>
+</head>
+<body>
+    <!-- 作用：保证页面打开的速度（3s之内如果首页打不开就已经算是死亡页面了）
+    原理：
+    1、对于首屏内容中的图片：首先给对应的区域一张默认的图片占着位置（默认图需要非常小，一般在5kb以内）
+    当首屏内容都加载完成后（或者给一个延迟时间），再开始加载真实的图片
+    2、对于其他屏中的图片：也是给一张默认的图片占位，当滚动条滚动到对应区域的时候，我们开始加载真实的图片。
+
+    扩展：数据的异步加载，开始只把前两屏的数据加载绑定出来，后面的数据不进行处理
+    当页面滚动到对应的区域的时候在从新请求数据然后绑定渲染数据
+-->
+<div class="banner" id="banner">
+    <!-- trueImg是当前IMG标签的自定义属性，存储的是真实图片的地址 -->
+    <img src="" trueImg="img/F200606160837321051348271.jpg"/>
+</div>
+<script>
+var banner = document.getElementById("banner"),imgFir = 
+banner.getElementsByTagName('img')[0];
+
+window.setTimeout(function(){
+    //  imgFir.src = imgFir.getAttribute('trueImg');
+    //  imgFir.style.display = 'biock';
+    //以上处理不完整，我们获取真实图片地址错误的话，当赋值的IMG的src属性，不仅控制台会报错，页面中也会出现碎图，影像视觉效果。
+    // var oImg = document.createElement('img');创建一个临时的img标签
+    var oImg = new Image;
+    oImg.src= imgFir.getAttribute('trueImg');
+    oImg.onload = function(){//->当图片能正常加载
+        imgFir.src = this.src;
+        imgFir.style.display = 'block';
+        oImg=null;
+        var nowtime = (new Date-time)
+        console.log(nowtime)
+    }
+      var time = new Date;
+},1000)
+</script>
+</body>
+</html>
