@@ -325,29 +325,29 @@ var utils = (function () {
 
     //->把外界需要使用的方法暴露给utils
     return {
-        win: win,
-        offset: offset,
-        listToArray: listToArray,
-        formatJSON: formatJSON,
+        win: win,//->获取操作所有浏览器盒子模型信息
+        offset: offset,//->获取当前元素距离body的上偏移和左偏移
+        listToArray: listToArray,//->把类数组转化为数组
+        formatJSON: formatJSON,//->格式化json格式的字符串
         getXHR:getXHR,
-        children: children,
-        prev: prev,
-        next: next,
-        prevAll: prevAll,
-        nextAll: nextAll,
-        sibling: sibling,
-        siblings: siblings,
-        index: index,
-        firstChild: firstChild,
-        lastChild: lastChild,
-        append: append,
-        prepend: prepend,
-        insertBefore: insertBefore,
-        insertAfter: insertAfter,
-        hasClass: hasClass,
-        addClass: addClass,
-        removeClass: removeClass,
-        getElementsByClass: getElementsByClass,
-        css: css
+        children: children,//->获取当前元素下所有的子节点
+        prev: prev,//->上一个哥哥元素节点
+        next: next,//->下一个弟弟元素节点
+        prevAll: prevAll,//->所有的哥哥元素节点
+        nextAll: nextAll,//->所有的弟弟元素节点
+        sibling: sibling,//->相邻的两个兄弟元素节点
+        siblings: siblings,//->所有的兄弟元素节点
+        index: index,//->当前元素的索引
+        firstChild: firstChild,//->第一个子元素
+        lastChild: lastChild,//->最后一个子元素
+        append: append,//->添加到容器的末尾
+        prepend: prepend,//->添加到容器的开头
+        insertBefore: insertBefore,//->添加到容器中某一个元素之前
+        insertAfter: insertAfter,//->添加到容器中某一元素之后
+        hasClass: hasClass,//->是否拥有某一项类名
+        addClass: addClass,//->增加样式类名
+        removeClass: removeClass,//->删除样式类名
+        getElementsByClass: getElementsByClass,//->通过元素的样式类名来获得一组元素
+        css: css//->获取当前浏览器所有经过的样式
     }
 })();
