@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>指定步长实现单方向匀速运动</title>
+    <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            #box{
+                 position: absolute; /*相对于body进行定位 */
+                 top: 0;
+                 padding: 0;
+                 width: 100px;
+                 height: 100px;
+                 background: lightblue;
+        
+            }
+            </style>
+</head>
+<body>
+    <div id="box"></div>
+    
+    <script src="JS/utils.js"></script>
+    <script>
+    var oBox = document.getElementById("box");
+    var maxLeft = utils.win("clientWidth")-oBox.offsetWidth ;
+    var step = 5;
+    var timer = window.setInterval(function(){
+        var curLeft = utils.css(oBox,"left");
+        if(curLeft +step >= maxLeft){
+            window.clearInterval(timer);
+            return;
+        }
+        curLeft+=step;
+        utils.css(oBox,"left",curLeft);
+    },10)
+     //->问题：当总距离/我们设定的步长=不是一个整数->少走一步还会差点才到目标位置，多走一步的话会超出目标位置
+     //->在进行边界判断的时候加上步长来进行处理
+    </script>
+</body>
+</html>
