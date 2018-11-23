@@ -1,0 +1,4 @@
+[{"images":"images/01f8f35722af1132f875a3995dc5d7.jpg","desc":"准备好开始抢购"},
+{"images/01acaf5722af116ac7253812b32635.jpg","desc":"准备好开始抢购"},
+{"images/01420b5722af116ac725381249e7af.jpg","desc":"准备好开始抢购"},
+{"images/0198925722af1132f875a3996e07d0.jpg","desc":"准备好开始抢购"},]
